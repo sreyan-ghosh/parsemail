@@ -15,6 +15,7 @@ To be read pars-ayy-mail. Made for VITMAS. With love <3
 - Add a feature to send attachments as well.
 - Add a frontend to enable non-python users to work on this project.
 - Go ahead and open an issue if you want to add something else.
+- Take note to make a branch in your fork and open a PR for the commits on the branch. **master branch PRs will not be accepted**
 
 [mailsender]: (https://github.com/sreyan-ghosh/parsemail/blob/master/mailsender.py)
 [parser]: (https://github.com/sreyan-ghosh/parsemail/blob/master/parser.py)
