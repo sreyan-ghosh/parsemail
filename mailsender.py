@@ -9,6 +9,7 @@ class MailDeets:
     def __init__(self):
         self.mymail = 'your-gmail-id'
         self.password = 'your-password'
+        self.teamsusername = 
 """
 
 # get the filepath to the data
