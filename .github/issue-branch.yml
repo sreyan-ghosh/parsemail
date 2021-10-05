@@ -1,0 +1,6 @@
+# contains the configuration params for the issue-branch bot which auto creates a branch whenever an issue is assigned
+
+mode: auto
+branchName: short
+gitSafeReplacementChar: '-'
+autoCloseIssue: true
