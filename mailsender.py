@@ -14,7 +14,7 @@ class MailDeets:
     def __init__(self):
         self.mymail = 'your-gmail-id'
         self.password = 'your-password'
-        self.teamsusername = 
+        self.teamsusername = 'teamsusername'
 """
 
 # get the filepath to the data
@@ -31,14 +31,13 @@ subject = 'add the subject here'
 body = """
     add the message body here
 """
-msg = 'Subject: ' + subject + '\n' + body
 
 message = MIMEMultipart()
 
 message["From"] = sender
 message["Subject"] = subject
 
-message.attach(MIMEText(msg, "plain"))
+message.attach(MIMEText(body, "plain"))
 
 receivers = parsefile(filepath) # parses the entire dataset into a list of email addresses (change as per schema of dataset)
 PORT = 465 # assign smtp port
@@ -61,6 +60,7 @@ try:
         f"attachment; filename= {attachmentfile}",)
 
     message.attach(part)
+
 except Exception as e:
     if attachmentfile:
         print("Error opening attached file. Check the file path and permissions")
@@ -74,7 +74,7 @@ except Exception as e:
 
 message = message.as_string()
 
-i = 0 # counter for number of mails sent. After 85 or so, the server logs you out for 2 mins, gotta log in and start again
+i = 1 # counter for number of mails sent. After 85 or so, the server logs you out for 2 mins, gotta log in and start again
 for rec in receivers:
     connection.sendmail(sender, rec, message)
     print(str(i) + ": Message sent!!") # confirmation message
