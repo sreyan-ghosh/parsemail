@@ -17,5 +17,12 @@ To be read pars-ayy-mail. Made for VITMAS. With love <3
 - Go ahead and open an issue if you want to add something else.
 - Take note to make a branch in your fork and open a PR for the commits on the branch. **master branch PRs will not be accepted**
 
+#### Parseteams (in dev) (Only for VIT)
+- To use the [`get_mail_from_teams.py`](teamsparser) file, you must have the `WHO` bot installed in your teams profile.
+- The driver function is the `get_emails()` function which accepts a list of registration numbers and returns the emails of the provided numbers.
+- This utility is still buggy, since the script often runs faster than the page loads yielding repeated emails. Still can be used for bolk mail spamming.
+- To be used in conjunction with the [`mailsender.py`](mailsender) file with minor code insertions to feed the list of emails into the `mailsender`.
+
 [mailsender]: (https://github.com/sreyan-ghosh/parsemail/blob/master/mailsender.py)
 [parser]: (https://github.com/sreyan-ghosh/parsemail/blob/master/parser.py)
+[teamsparser]: (https://github.com/sreyan-ghosh/parsemail/blob/master/parseteams/get_mail_from_teams.py)
