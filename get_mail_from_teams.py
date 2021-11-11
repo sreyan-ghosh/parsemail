@@ -59,7 +59,6 @@ def get_emails(regnums):
             manager_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
                 (By.XPATH, "//button[@title='Manager']")
             ))
-            time.sleep(2)
             manager_button.click()
 
             sent_msgs = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(
