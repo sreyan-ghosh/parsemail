@@ -29,7 +29,7 @@ def teamsparser(filepath):
     Change the code of the function to suit the schema of the dataset. Usually done by providing the right column-name.
     """
     df = pd.read_csv(filepath)
-    regnums = df['Registration Number']
+    regnums = df['ParticipantId']
     regnums = list(regnums)
     # print(type(regnums))
     return regnums

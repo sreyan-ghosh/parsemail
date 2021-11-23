@@ -1,5 +1,6 @@
 from parser import parsefile
-import smtplib, ssl
+import smtplib
+import ssl
 from MailDeets import MailDeets
 
 from email import encoders
@@ -19,11 +20,14 @@ class MailDeets:
 
 # get the filepath to the data
 filepath = './data/data.csv'
-attachmentfile = input("Path of file to attach (leave empty for no attachment): ")
+attachmentfile = input(
+    "Path of file to attach (leave empty for no attachment): ")
 
-mailinfo = MailDeets() # instantiate an object of the MailDeets class. (not included in the repo)
-sender = mailinfo.mymail # the self.mymail attribute has the mail id of the sender
-password = mailinfo.password # the self.password attribute contains the password for accessing the smtp server
+# instantiate an object of the MailDeets class. (not included in the repo)
+mailinfo = MailDeets()
+sender = mailinfo.mymail  # the self.mymail attribute has the mail id of the sender
+# the self.password attribute contains the password for accessing the smtp server
+password = mailinfo.password
 
 # receiver = sender # for testing purposes only
 
@@ -39,12 +43,13 @@ message["Subject"] = subject
 
 message.attach(MIMEText(body, "plain"))
 
-receivers = parsefile(filepath) # parses the entire dataset into a list of email addresses (change as per schema of dataset)
-PORT = 465 # assign smtp port
+# parses the entire dataset into a list of email addresses (change as per schema of dataset)
+receivers = parsefile(filepath)
+PORT = 465  # assign smtp port
 sslcontext = ssl.create_default_context()
-connection = smtplib.SMTP_SSL("smtp.gmail.com",PORT,context=sslcontext)
+connection = smtplib.SMTP_SSL("smtp.gmail.com", PORT, context=sslcontext)
 
-connection.login(sender, password) # login to smtp server
+connection.login(sender, password)  # login to smtp server
 
 try:
     with open(attachmentfile, "rb") as attachment:
@@ -74,8 +79,8 @@ except Exception as e:
 
 message = message.as_string()
 
-i = 1 # counter for number of mails sent. After 85 or so, the server logs you out for 2 mins, gotta log in and start again
+i = 1  # counter for number of mails sent. After 85 or so, the server logs you out for 2 mins, gotta log in and start again
 for rec in receivers:
     connection.sendmail(sender, rec, message)
-    print(str(i) + ": Message sent!!") # confirmation message
+    print(str(i) + ": Message sent!!")  # confirmation message
     i = i+1
